@@ -28,7 +28,7 @@ Smartphone.prototype.call = function (name) {
     console.log(`Smartphone ${this.name} is call to ${name}`);
 }
 Smartphone.prototype.getScreenSize = function () {
-    console.log("Screen size of", this.name, " = " ,this.screenSize, "inch.");
+    console.log(`Screen size of ${this.name} = ${this.screenSize} inch.`);
 }
 
 
@@ -70,26 +70,26 @@ let lg = new Computer("LG", 200, "Windows");
 
 
 function printSumPower() {
-    console.log("Общая нагрузка электрической мощности:", sumPower(samsung, littleLamp, middleLamp, dell), "Вт\n");
+    console.log("Общая нагрузка электрической мощности:", sumPower(samsung, littleLamp, middleLamp, lg), "Вт\n");
 }
 
 
 samsung.turnOn();
 littleLamp.turnOn();
 middleLamp.turnOn();
-dell.turnOn();
+lg.turnOn();
 console.log("\n");
 
 samsung.call("mom");
 samsung.getScreenSize();
 littleLamp.light();
 middleLamp.light();
-dell.compile();
+lg.compile();
 console.log("\n");
 
 printSumPower();
 
-dell.turnOff();
+lg.turnOff();
 printSumPower();
 
 littleLamp.turnOff();

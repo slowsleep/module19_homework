@@ -30,7 +30,7 @@ class Smartphone extends ElectricTool {
     }
 
     getScreenSize() {
-        console.log("Screen size of", this.name, " = " ,this.screenSize);
+        console.log(`Screen size of ${this.name} = ${this.screenSize} inch.`);
     }
 }
 
