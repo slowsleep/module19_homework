@@ -1,4 +1,4 @@
-// Задание 5.
+// Task 5.
 
 class ElectricTool {
     constructor(name, powerConsumption) {
@@ -20,12 +20,17 @@ class ElectricTool {
 
 
 class Smartphone extends ElectricTool {
-    constructor(name, powerConsumption) {
+    constructor(name, powerConsumption, screenSize) {
         super(name, powerConsumption);
+        this.screenSize = screenSize;
     }
 
     call(name) {
         console.log(`Smartphone ${this.name} is call to ${name}`);
+    }
+
+    getScreenSize() {
+        console.log("Screen size of", this.name, " = " ,this.screenSize);
     }
 }
 
@@ -42,12 +47,13 @@ class DeskLamp extends ElectricTool {
 
 
 class Computer extends ElectricTool {
-    constructor(name, powerConsumption) {
+    constructor(name, powerConsumption, os) {
         super(name, powerConsumption);
+        this.os = os;
     }
 
     compile() {
-        console.log(`Computer ${this.name} is start to compile some code`);
+        console.log(`Computer ${this.name} try to compile some code on ${this.os}`);
     }
 }
 
@@ -59,31 +65,33 @@ function sumPower(...array) {
 }
 
 
+let iphone = new Smartphone("IPhone", 5, 5.4);
+let littleLamp = new DeskLamp("GlowingGhost", 9,);
+let middleLamp = new DeskLamp("WarmCircle", 13, "yellow");
+let dell = new Computer("Dell", 150, "Linux");
+
+
 function printSumPower() {
-    console.log("Общая нагрузка электрической мощности:", sumPower(samsung, littleLamp, middleLamp, lg), "Вт\n");
+    console.log("Общая нагрузка электрической мощности:", sumPower(iphone, littleLamp, middleLamp, dell), "Вт\n");
 }
 
 
-let samsung = new Smartphone("IPhone", 5);
-let littleLamp = new DeskLamp("GlowingGhost", 9,);
-let middleLamp = new DeskLamp("WarmCircle", 13, "yellow");
-let lg = new Computer("Dell", 150);
-
-samsung.turnOn();
+iphone.turnOn();
 littleLamp.turnOn();
 middleLamp.turnOn();
-lg.turnOn();
+dell.turnOn();
 console.log("\n");
 
-samsung.call("dad");
+iphone.call("dad");
+iphone.getScreenSize();
 littleLamp.light();
 middleLamp.light();
-lg.compile();
+dell.compile();
 console.log("\n");
 
 printSumPower();
 
-lg.turnOff();
+dell.turnOff();
 printSumPower();
 
 littleLamp.turnOff();
@@ -92,6 +100,6 @@ printSumPower();
 middleLamp.turnOff();
 printSumPower();
 
-samsung.turnOff();
+iphone.turnOff();
 printSumPower();
 

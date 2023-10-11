@@ -1,4 +1,4 @@
-// Задание 4.
+// Task 4.
 
 function ElectricTool (name, powerConsumption) {
     this.name = name;
@@ -17,14 +17,18 @@ ElectricTool.prototype.turnOff = function () {
 };
 
 
-function Smartphone(name, powerConsumption) {
+function Smartphone(name, powerConsumption, screenSize) {
     this.name = name;
     this.powerConsumption = powerConsumption;
+    this.screenSize = screenSize;
 }
 
 Smartphone.prototype = new ElectricTool();
 Smartphone.prototype.call = function (name) {
     console.log(`Smartphone ${this.name} is call to ${name}`);
+}
+Smartphone.prototype.getScreenSize = function () {
+    console.log("Screen size of", this.name, " = " ,this.screenSize, "inch.");
 }
 
 
@@ -40,14 +44,15 @@ DeskLamp.prototype.light = function () {
 }
 
 
-function Computer(name, powerConsumption) {
+function Computer(name, powerConsumption, os) {
     this.name = name;
     this.powerConsumption = powerConsumption;
+    this.os = os
 }
 
 Computer.prototype = new ElectricTool();
 Computer.prototype.compile = function () {
-    console.log(`Computer ${this.name} is start to compile some code`);
+    console.log(`Computer ${this.name} try to compile some code on ${this.os}`);
 }
 
 
@@ -58,31 +63,33 @@ function sumPower(...array) {
 }
 
 
-function printSumPower() {
-    console.log("Общая нагрузка электрической мощности:", sumPower(samsung, littleLamp, middleLamp, lg), "Вт\n");
-}
-
-
-let samsung = new Smartphone("Samsung", 6);
+let samsung = new Smartphone("Samsung", 6, 6.8);
 let littleLamp = new DeskLamp("LittleSun", 8, "green");
 let middleLamp = new DeskLamp("MiddleSun", 12, "red");
-let lg = new Computer("LG", 200);
+let lg = new Computer("LG", 200, "Windows");
+
+
+function printSumPower() {
+    console.log("Общая нагрузка электрической мощности:", sumPower(samsung, littleLamp, middleLamp, dell), "Вт\n");
+}
+
 
 samsung.turnOn();
 littleLamp.turnOn();
 middleLamp.turnOn();
-lg.turnOn();
+dell.turnOn();
 console.log("\n");
 
 samsung.call("mom");
+samsung.getScreenSize();
 littleLamp.light();
 middleLamp.light();
-lg.compile();
+dell.compile();
 console.log("\n");
 
 printSumPower();
 
-lg.turnOff();
+dell.turnOff();
 printSumPower();
 
 littleLamp.turnOff();
